@@ -3,7 +3,7 @@ name: Create TEST docker image
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   build:
