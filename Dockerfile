@@ -11,6 +11,7 @@ LABEL maintainer="Tim Sutton<tim@kartoza.com>"
 ARG IMAGE_VERSION
 
 RUN apt-get -qq update --fix-missing && apt-get -qq --yes upgrade
+RUN apt-get -y install python3-setuptools
 
 RUN set -eux \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -134,19 +135,4 @@ VOLUME /var/lib/postgresql
 ENTRYPOINT /scripts/docker-entrypoint.sh
 
 
-##############################################################################
-# Testing Stage                                                           #
-##############################################################################
-FROM postgis-prod AS postgis-test
 
-COPY scenario_tests/utils/requirements.txt /lib/utils/requirements.txt
-
-RUN set -eux \
-    && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get update \
-    && apt-get -y --no-install-recommends install python3-pip \
-    && apt-get -y --purge autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install -r /lib/utils/requirements.txt
