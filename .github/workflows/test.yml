@@ -26,6 +26,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: schneidergeo/postgis_base
-
+          tags: ubuntu 
 
           
