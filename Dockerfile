@@ -1,7 +1,7 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
-ARG DISTRO=debian
-ARG IMAGE_VERSION=buster
-ARG IMAGE_VARIANT=slim
+ARG DISTRO=ubuntu
+ARG IMAGE_VERSION=bionic
+ARG IMAGE_VARIANT=20210723
 FROM kartoza/postgis:$DISTRO-$IMAGE_VERSION-$IMAGE_VARIANT
 MAINTAINER Tim Sutton<tim@kartoza.com>
 
@@ -23,6 +23,9 @@ RUN set -eux \
 
 
 #-------------Application Specific Stuff ----------------------------------------------------
+
+RUN apt-get -y install python3-setuptools
+
 
 # We add postgis as well to prevent build errors (that we dont see on local builds)
 # on docker hub e.g.
