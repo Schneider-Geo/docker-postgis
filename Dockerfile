@@ -3,7 +3,7 @@
 ##############################################################################
 ARG DISTRO=debian
 ARG IMAGE_VERSION=bullseye
-ARG IMAGE_VARIANT=slim
+ARG IMAGE_VARIANT=20210721
 FROM $DISTRO:$IMAGE_VERSION-$IMAGE_VARIANT AS postgis-base
 LABEL maintainer="Tim Sutton<tim@kartoza.com>"
 
