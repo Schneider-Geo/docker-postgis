@@ -27,5 +27,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: schneidergeo/postgis_base
           tag_with_ref: true
-          
+          tags: latest
+
           

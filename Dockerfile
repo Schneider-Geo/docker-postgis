@@ -1,9 +1,9 @@
 ##############################################################################
 # Base stage                                                                 #
 ##############################################################################
-ARG DISTRO=debian
-ARG IMAGE_VERSION=bullseye
-ARG IMAGE_VARIANT=20210721
+ARG DISTRO=ubuntu
+ARG IMAGE_VERSION=bionic
+ARG IMAGE_VARIANT=20210723
 FROM $DISTRO:$IMAGE_VERSION-$IMAGE_VARIANT AS postgis-base
 LABEL maintainer="Tim Sutton<tim@kartoza.com>"
 
