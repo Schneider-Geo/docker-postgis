@@ -132,7 +132,15 @@ RUN set -eux \
 RUN echo 'figlet -t "Kartoza Docker PostGIS"' >> ~/.bashrc
 VOLUME /var/lib/postgresql
 
-ENTRYPOINT /scripts/docker-entrypoint.sh
+##############################################################################
+# Customization Stage                                                           #
+##############################################################################
 
+FROM postgis-prod
+
+COPY scripts/setup-db.sql /docker-entrypoint-initdb.d/
+COPY scripts/contours_NE.sql /docker-entrypoint-initdb.d/
+
+ENTRYPOINT /scripts/docker-entrypoint.sh
 
 
