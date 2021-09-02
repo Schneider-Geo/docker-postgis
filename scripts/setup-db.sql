@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS print_data
   color text,
   width int,
   height int,
-  icon varchar(255)
+  icondir varchar(255)
 )
 WITH (
   OIDS=FALSE
