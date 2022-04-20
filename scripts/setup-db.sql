@@ -50,8 +50,11 @@ CREATE TABLE IF NOT EXISTS print_schedule
     query text,
     printType text,
     priority int
+	task varchar(255) NULL DEFAULT 'undefined'::character varying,
 
 );
+
+
 
 
 
@@ -78,37 +81,10 @@ CREATE TABLE IF NOT EXISTS tile_schedule
 ALTER TABLE tile_schedule
   OWNER TO osm;
   
-  
-CREATE SEQUENCE custom_osm_seq
-    START WITH 4591
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 ALTER TABLE custom_osm_seq OWNER TO osm;
 
-
-
-CREATE TABLE custom_osm_point (
-    osm_id bigint DEFAULT nextval('custom_osm_seq'::regclass) NOT NULL,
-    name text,
-    way geometry,
-    id integer,
-    type text
-);
-
-
-ALTER TABLE custom_osm_point OWNER TO osm;
-
-
-CREATE TABLE custom_osm_polygon (
-    osm_id bigint DEFAULT nextval('custom_osm_seq'::regclass) NOT NULL,
-    name text,
-    kind text,
-    way geometry
-);
 
 
 ALTER TABLE custom_osm_polygon OWNER TO osm;
@@ -116,13 +92,7 @@ ALTER TABLE custom_osm_polygon OWNER TO osm;
   
 SET CLIENT_ENCODING TO UTF8;
 SET STANDARD_CONFORMING_STRINGS TO ON;
-BEGIN;
-CREATE TABLE "contours" (gid serial,"id" int4,"height" float8);
-ALTER TABLE "contours" ADD PRIMARY KEY (gid);
-SELECT AddGeometryColumn('','contours','way','0','MULTILINESTRING',2);
-CREATE INDEX ON "contours" USING GIST ("way");
-COMMIT;
-ANALYZE "contours";
+
 SET CLIENT_ENCODING TO UTF8;
 SET STANDARD_CONFORMING_STRINGS TO ON;
 

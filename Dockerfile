@@ -140,6 +140,7 @@ FROM postgis-prod
 
 COPY scripts/setup-db.sql /docker-entrypoint-initdb.d/
 COPY scripts/contours_NE.sql /docker-entrypoint-initdb.d/
+COPY scripts/postgresql.conf /etc/postgresql/12/main
 
 ENTRYPOINT /scripts/docker-entrypoint.sh
 
