@@ -83,11 +83,6 @@ ALTER TABLE tile_schedule
   
 
 
-ALTER TABLE custom_osm_seq OWNER TO osm;
-
-
-
-ALTER TABLE custom_osm_polygon OWNER TO osm;
   
   
 SET CLIENT_ENCODING TO UTF8;
